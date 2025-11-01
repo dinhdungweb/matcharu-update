@@ -1,0 +1,342 @@
+/* Ways to Prepare Section Styles */
+.ways-to-prepare {
+  padding: 60px 0;
+  background-color: #1a1a1a;
+  color: #ffffff;
+}
+
+.ways-to-prepare__header {
+  margin-bottom: 40px;
+}
+
+.ways-to-prepare__title {
+  font-size: 2.5rem;
+  font-weight: 600;
+  margin-bottom: 16px;
+  color: #ffffff;
+  text-align: center;
+}
+
+.ways-to-prepare__description {
+  font-size: 1.1rem;
+  color: #cccccc;
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.ways-to-prepare__content {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Preparation Method Styles */
+.preparation-method {
+  background-color: #2a2a2a;
+  border-radius: 12px;
+  padding: 30px;
+  margin-bottom: 20px;
+  border: 1px solid #3a3a3a;
+}
+
+.preparation-method__header {
+  margin-bottom: 30px;
+}
+
+.preparation-method__title {
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #ffffff;
+}
+
+.preparation-method__subtitle {
+  font-weight: 400;
+  color: #888888;
+  font-size: 0.9em;
+}
+
+.preparation-method__description {
+  font-size: 1rem;
+  color: #cccccc;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Preparation Steps */
+.preparation-method__steps {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.preparation-step {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  padding: 20px;
+  background-color: #333333;
+  border-radius: 8px;
+  border-left: 4px solid #4CAF50;
+}
+
+.preparation-step__number {
+  background-color: #4CAF50;
+  color: #ffffff;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+.preparation-step__content {
+  flex: 1;
+}
+
+.preparation-step__title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #ffffff;
+}
+
+.preparation-step__details {
+  background-color: #4a4a4a;
+  color: #4CAF50;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  display: inline-block;
+  margin-bottom: 8px;
+}
+
+.preparation-step__description {
+  font-size: 0.95rem;
+  color: #cccccc;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.preparation-step__image {
+  flex-shrink: 0;
+  width: 80px;
+  height: 80px;
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: #4a4a4a;
+}
+
+.preparation-step__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Video Button */
+.preparation-method__video {
+  margin-top: 24px;
+  text-align: center;
+}
+
+.preparation-method__video-btn {
+  background-color: #4CAF50;
+  color: #ffffff;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 25px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.3s ease;
+}
+
+.preparation-method__video-btn:hover {
+  background-color: #45a049;
+  transform: translateY(-2px);
+}
+
+.preparation-method__video-btn svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* Collapsible Method Styles */
+.collapsible-method {
+  border: 1px solid #3a3a3a;
+  border-radius: 8px;
+  margin-bottom: 8px;
+  overflow: hidden;
+  background-color: #2a2a2a;
+}
+
+.collapsible-method__toggle {
+  width: 100%;
+  background: none;
+  border: none;
+  padding: 20px 24px;
+  text-align: left;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #ffffff;
+  font-size: 1.1rem;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+}
+
+.collapsible-method__toggle:hover {
+  background-color: #333333;
+}
+
+.collapsible-method__title {
+  flex: 1;
+}
+
+.collapsible-method__icon {
+  transition: transform 0.3s ease;
+  color: #888888;
+}
+
+.collapsible-method__content {
+  display: none;
+  padding: 0 24px 24px 24px;
+  border-top: 1px solid #3a3a3a;
+}
+
+.collapsible-method__description {
+  font-size: 1rem;
+  color: #cccccc;
+  line-height: 1.6;
+  margin-bottom: 16px;
+}
+
+.collapsible-method__details {
+  font-size: 0.95rem;
+  color: #cccccc;
+  line-height: 1.6;
+}
+
+.collapsible-method__details p {
+  margin-bottom: 12px;
+}
+
+.collapsible-method__details p:last-child {
+  margin-bottom: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .ways-to-prepare {
+    padding: 40px 0;
+  }
+
+  .ways-to-prepare__title {
+    font-size: 2rem;
+  }
+
+  .preparation-method {
+    padding: 20px;
+  }
+
+  .preparation-step {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .preparation-step__image {
+    width: 60px;
+    height: 60px;
+    align-self: flex-start;
+  }
+
+  .preparation-method__title {
+    font-size: 1.5rem;
+  }
+
+  .collapsible-method__toggle {
+    padding: 16px 20px;
+    font-size: 1rem;
+  }
+
+  .collapsible-method__content {
+    padding: 0 20px 20px 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .ways-to-prepare__title {
+    font-size: 1.8rem;
+  }
+
+  .preparation-method {
+    padding: 16px;
+  }
+
+  .preparation-step {
+    padding: 16px;
+  }
+
+  .preparation-method__title {
+    font-size: 1.3rem;
+  }
+
+  .collapsible-method__toggle {
+    padding: 14px 16px;
+  }
+
+  .collapsible-method__content {
+    padding: 0 16px 16px 16px;
+  }
+}
+
+/* Color Scheme Variations */
+.ways-to-prepare.color-inverse-color-scheme {
+  background-color: #ffffff;
+  color: #1a1a1a;
+}
+
+.ways-to-prepare.color-inverse-color-scheme .preparation-method {
+  background-color: #f8f8f8;
+  border-color: #e0e0e0;
+}
+
+.ways-to-prepare.color-inverse-color-scheme .preparation-method__title,
+.ways-to-prepare.color-inverse-color-scheme .preparation-step__title,
+.ways-to-prepare.color-inverse-color-scheme .collapsible-method__toggle {
+  color: #1a1a1a;
+}
+
+.ways-to-prepare.color-inverse-color-scheme .preparation-method__description,
+.ways-to-prepare.color-inverse-color-scheme .preparation-step__description,
+.ways-to-prepare.color-inverse-color-scheme .collapsible-method__description,
+.ways-to-prepare.color-inverse-color-scheme .collapsible-method__details {
+  color: #666666;
+}
+
+.ways-to-prepare.color-inverse-color-scheme .preparation-step {
+  background-color: #ffffff;
+  border-color: #4CAF50;
+}
+
+.ways-to-prepare.color-inverse-color-scheme .collapsible-method {
+  background-color: #f8f8f8;
+  border-color: #e0e0e0;
+}
+
+.ways-to-prepare.color-inverse-color-scheme .collapsible-method__toggle:hover {
+  background-color: #f0f0f0;
+}
+
+.ways-to-prepare.color-inverse-color-scheme .collapsible-method__content {
+  border-color: #e0e0e0;
+}

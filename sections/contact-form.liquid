@@ -1,0 +1,154 @@
+<section class="section-contact-form py-50 py-md-80 mt-30">
+  <div class="{{ section.settings.container }}">
+    <div class="row contact-form-wrapper align-items-center">
+      <div class="col-12 col-md-6 contact-banner-col">
+        <div class="contact-banner-image">
+          {% if section.settings.banner_image != blank %}
+            <img 
+              src="{{ section.settings.banner_image | img_url: 'master' }}" 
+              alt="{{ section.settings.contact_form_heading }}"
+              class="w-full h-full object-cover"
+              loading="lazy"
+            >
+          {% else %}
+            <div class="contact-banner-placeholder">
+              <div class="placeholder-text">{{ section.settings.contact_form_heading }}</div>
+            </div>
+          {% endif %}
+        </div>
+      </div>
+      <div class="col-12 col-md-6 contact-form-col">
+        <div class="bls__contact-header bls__contact-form">
+          <div class="contact-header mb-25">
+            <h3 class="m-0">
+              {{ section.settings.contact_form_heading }}
+            </h3>
+            <p>{{ section.settings.contact_form_sub_heading }}</p>
+          </div>
+          <div class="contact-form">
+            {% form 'contact' %}
+              {% if form.posted_successfully? %}
+                <p class="success">
+                  {{ 'templates.contact.form.page_contact_successs' | t }}
+                </p>
+              {% else %}
+                {{ form.errors | default_errors }}
+              {% endif %}
+              <div class="form-field form-group row row-cols-md-2" style="--bs-gutter-x: 2rem">
+                <div class="field-contact-name mb-25">
+                  <input
+                    type="text"
+                    class="form-input form-input-placeholder w-full"
+                    name="contact[name]"
+                    value="{% if form.name %}{{ form.name }}{% elsif customer %}{{ customer.name }}{% endif %}"
+                    id="inputName"
+                    placeholder="{{ 'templates.contact.form.name' | t }}"
+                  >
+                </div>
+                <div class="field-contact-email">
+                  <input
+                    type="email"
+                    class="form-input form-input-placeholder w-full"
+                    name="contact[email]"
+                    required
+                    autocorrect="off"
+                    autocapitalize="off"
+                    value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}"
+                    id="inputEmail"
+                    placeholder="{{ 'templates.contact.form.email' | t }}"
+                  >
+                </div>
+              </div>
+              <div class="form-field form-group">
+                <textarea
+                  name="contact[body]"
+                  class="form-input form-input-placeholder w-full"
+                  id="message"
+                  rows="8"
+                  placeholder="{{ 'templates.contact.form.comment' | t }}"
+                ></textarea>
+              </div>
+              <div class="save-info mt-20 flex">
+                <div class="checkbox-group relative">
+                  <input
+                    type="checkbox"
+                    class="input m-0 opacity-0 absolute inset-0 pointer inset-0"
+                    name="contact[saveInfo]"
+                    id="save-info"
+                  >
+                  <span class="checkmark"></span>
+                </div>
+                <label for="save-info" class="pointer">
+                  {{- 'templates.contact.form.save_info' | t -}}
+                </label>
+              </div>
+              <div class="form-actions mt-30">
+                <input
+                  type="submit"
+                  class="button btn btn-primary"
+                  value="{{ 'templates.contact.form.send_message' | t }}"
+                >
+              </div>
+            {% endform %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Contact Form",
+  "settings": [
+    {
+      "type": "select",
+      "id": "container",
+      "label": "Container type",
+      "default": "container",
+      "options": [
+        {
+          "value": "container-fluid px-0",
+          "label": "Full width"
+        },
+        {
+          "value": "container",
+          "label": "Box"
+        }
+      ]
+    },
+    {
+      "type": "header",
+      "content": "Banner Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "banner_image",
+      "label": "Banner image",
+      "info": "Recommended size: 800x1000 pixels"
+    },
+    {
+      "type": "header",
+      "content": "Form Content"
+    },
+    {
+      "type": "text",
+      "id": "contact_form_heading",
+      "label": "Heading",
+      "default": "Get in Touch"
+    },
+    {
+      "type": "richtext",
+      "id": "contact_form_sub_heading",
+      "label": "Sub heading",
+      "default": "<p>We'd love to hear from you about our entire service. Your comments and suggestions will be highly appreciated. Please complete the form below.</p>"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Contact Form",
+      "category": "Contact"
+    }
+  ]
+}
+{% endschema %}

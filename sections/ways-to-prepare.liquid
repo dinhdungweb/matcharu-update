@@ -1,0 +1,430 @@
+{{ 'ways-to-prepare.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign st = section.settings
+  assign container = st.container | default: 'container'
+  assign color_scheme = st.color_scheme | default: 'default-color-scheme'
+-%}
+
+<div class="ways-to-prepare section-{{ section.id }} color-{{ color_scheme }}">
+  <div class="{{ container }}">
+    {% if st.heading != blank %}
+      <div class="ways-to-prepare__header text-center mb-4">
+        <h2 class="ways-to-prepare__title">{{ st.heading }}</h2>
+        {% if st.description != blank %}
+          <div class="ways-to-prepare__description">{{ st.description }}</div>
+        {% endif %}
+      </div>
+    {% endif %}
+
+    <div class="ways-to-prepare__content">
+      {% for block in section.blocks %}
+        {% case block.type %}
+          {% when 'preparation_method' %}
+            <div class="preparation-method" {{ block.shopify_attributes }}>
+              <div class="preparation-method__header">
+                <h3 class="preparation-method__title">
+                  {{ block.settings.title }}
+                  {% if block.settings.subtitle != blank %}
+                    <span class="preparation-method__subtitle">({{ block.settings.subtitle }})</span>
+                  {% endif %}
+                </h3>
+                {% if block.settings.description != blank %}
+                  <p class="preparation-method__description">{{ block.settings.description }}</p>
+                {% endif %}
+              </div>
+
+              {% if block.settings.show_steps %}
+                <div class="preparation-method__steps">
+                  {% if block.settings.step1_title != blank %}
+                    <div class="preparation-step">
+                      <div class="preparation-step__number">1</div>
+                      <div class="preparation-step__content">
+                        <h4 class="preparation-step__title">{{ block.settings.step1_title }}</h4>
+                        {% if block.settings.step1_details != blank %}
+                          <div class="preparation-step__details">{{ block.settings.step1_details }}</div>
+                        {% endif %}
+                        {% if block.settings.step1_description != blank %}
+                          <p class="preparation-step__description">{{ block.settings.step1_description }}</p>
+                        {% endif %}
+                      </div>
+                      {% if block.settings.step1_image != blank %}
+                        <div class="preparation-step__image">
+                          <img src="{{ block.settings.step1_image | image_url: width: 150 }}" 
+                               alt="{{ block.settings.step1_title }}"
+                               loading="lazy">
+                        </div>
+                      {% endif %}
+                    </div>
+                  {% endif %}
+
+                  {% if block.settings.step2_title != blank %}
+                    <div class="preparation-step">
+                      <div class="preparation-step__number">2</div>
+                      <div class="preparation-step__content">
+                        <h4 class="preparation-step__title">{{ block.settings.step2_title }}</h4>
+                        {% if block.settings.step2_details != blank %}
+                          <div class="preparation-step__details">{{ block.settings.step2_details }}</div>
+                        {% endif %}
+                        {% if block.settings.step2_description != blank %}
+                          <p class="preparation-step__description">{{ block.settings.step2_description }}</p>
+                        {% endif %}
+                      </div>
+                      {% if block.settings.step2_image != blank %}
+                        <div class="preparation-step__image">
+                          <img src="{{ block.settings.step2_image | image_url: width: 150 }}" 
+                               alt="{{ block.settings.step2_title }}"
+                               loading="lazy">
+                        </div>
+                      {% endif %}
+                    </div>
+                  {% endif %}
+
+                  {% if block.settings.step3_title != blank %}
+                    <div class="preparation-step">
+                      <div class="preparation-step__number">3</div>
+                      <div class="preparation-step__content">
+                        <h4 class="preparation-step__title">{{ block.settings.step3_title }}</h4>
+                        {% if block.settings.step3_details != blank %}
+                          <div class="preparation-step__details">{{ block.settings.step3_details }}</div>
+                        {% endif %}
+                        {% if block.settings.step3_description != blank %}
+                          <p class="preparation-step__description">{{ block.settings.step3_description }}</p>
+                        {% endif %}
+                      </div>
+                      {% if block.settings.step3_image != blank %}
+                        <div class="preparation-step__image">
+                          <img src="{{ block.settings.step3_image | image_url: width: 150 }}" 
+                               alt="{{ block.settings.step3_title }}"
+                               loading="lazy">
+                        </div>
+                      {% endif %}
+                    </div>
+                  {% endif %}
+                </div>
+              {% endif %}
+
+              {% if block.settings.video_url != blank %}
+                <div class="preparation-method__video">
+                  <button class="preparation-method__video-btn" data-video-url="{{ block.settings.video_url }}">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                      <path d="M8 5v14l11-7z" fill="currentColor"/>
+                    </svg>
+                    {{ block.settings.video_text | default: 'Play video' }}
+                  </button>
+                </div>
+              {% endif %}
+            </div>
+
+          {% when 'collapsible_method' %}
+            <div class="collapsible-method" {{ block.shopify_attributes }}>
+              <button class="collapsible-method__toggle" type="button" data-toggle="collapse">
+                <span class="collapsible-method__title">{{ block.settings.title }}</span>
+                <svg class="collapsible-method__icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                  <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+              <div class="collapsible-method__content">
+                {% if block.settings.description != blank %}
+                  <p class="collapsible-method__description">{{ block.settings.description }}</p>
+                {% endif %}
+                {% if block.settings.content != blank %}
+                  <div class="collapsible-method__details">{{ block.settings.content }}</div>
+                {% endif %}
+              </div>
+            </div>
+        {% endcase %}
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // Collapsible functionality
+  const toggles = document.querySelectorAll('.collapsible-method__toggle');
+  toggles.forEach(toggle => {
+    toggle.addEventListener('click', function() {
+      const content = this.nextElementSibling;
+      const icon = this.querySelector('.collapsible-method__icon');
+      
+      if (content.style.display === 'block') {
+        content.style.display = 'none';
+        icon.style.transform = 'rotate(0deg)';
+      } else {
+        content.style.display = 'block';
+        icon.style.transform = 'rotate(180deg)';
+      }
+    });
+  });
+
+  // Video button functionality
+  const videoButtons = document.querySelectorAll('.preparation-method__video-btn');
+  videoButtons.forEach(button => {
+    button.addEventListener('click', function() {
+      const videoUrl = this.dataset.videoUrl;
+      if (videoUrl) {
+        window.open(videoUrl, '_blank');
+      }
+    });
+  });
+});
+</script>
+
+{% schema %}
+{
+  "name": "Ways to Prepare",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Ways to Prepare"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "Description"
+    },
+    {
+      "type": "select",
+      "id": "container",
+      "label": "Container",
+      "options": [
+        {
+          "value": "container",
+          "label": "Default"
+        },
+        {
+          "value": "container-fluid",
+          "label": "Full width"
+        }
+      ],
+      "default": "container"
+    },
+    {
+      "type": "select",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "options": [
+        {
+          "value": "default-color-scheme",
+          "label": "Default"
+        },
+        {
+          "value": "inverse-color-scheme",
+          "label": "Inverse"
+        }
+      ],
+      "default": "default-color-scheme"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "preparation_method",
+      "name": "Preparation Method",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Method Title",
+          "default": "Usucha"
+        },
+        {
+          "type": "text",
+          "id": "subtitle",
+          "label": "Method Subtitle",
+          "default": "Classic Matcha"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Method Description",
+          "default": "The standard matcha whisking method, made to be a normal, liquid consistency."
+        },
+        {
+          "type": "checkbox",
+          "id": "show_steps",
+          "label": "Show preparation steps",
+          "default": true
+        },
+        {
+          "type": "header",
+          "content": "Step 1"
+        },
+        {
+          "type": "text",
+          "id": "step1_title",
+          "label": "Step 1 Title",
+          "default": "Sift matcha"
+        },
+        {
+          "type": "text",
+          "id": "step1_details",
+          "label": "Step 1 Details",
+          "default": "2 g (0.07 oz)"
+        },
+        {
+          "type": "textarea",
+          "id": "step1_description",
+          "label": "Step 1 Description",
+          "default": "1.5 heaping tea ladles or 1 level teaspoon."
+        },
+        {
+          "type": "image_picker",
+          "id": "step1_image",
+          "label": "Step 1 Image"
+        },
+        {
+          "type": "header",
+          "content": "Step 2"
+        },
+        {
+          "type": "text",
+          "id": "step2_title",
+          "label": "Step 2 Title",
+          "default": "Add hot water"
+        },
+        {
+          "type": "text",
+          "id": "step2_details",
+          "label": "Step 2 Details",
+          "default": "60 mL (2 oz) 80°C (176°F)"
+        },
+        {
+          "type": "textarea",
+          "id": "step2_description",
+          "label": "Step 2 Description",
+          "default": "Pour boiling water into a teacup to cool it to 80°C, then pour into tea bowl."
+        },
+        {
+          "type": "image_picker",
+          "id": "step2_image",
+          "label": "Step 2 Image"
+        },
+        {
+          "type": "header",
+          "content": "Step 3"
+        },
+        {
+          "type": "text",
+          "id": "step3_title",
+          "label": "Step 3 Title",
+          "default": "Whisk"
+        },
+        {
+          "type": "text",
+          "id": "step3_details",
+          "label": "Step 3 Details",
+          "default": "15 seconds"
+        },
+        {
+          "type": "textarea",
+          "id": "step3_description",
+          "label": "Step 3 Description",
+          "default": "Whisk vigorously 15 seconds, making an \"M\" shape."
+        },
+        {
+          "type": "image_picker",
+          "id": "step3_image",
+          "label": "Step 3 Image"
+        },
+        {
+          "type": "header",
+          "content": "Video"
+        },
+        {
+          "type": "url",
+          "id": "video_url",
+          "label": "Video URL"
+        },
+        {
+          "type": "text",
+          "id": "video_text",
+          "label": "Video Button Text",
+          "default": "Play video"
+        }
+      ]
+    },
+    {
+      "type": "collapsible_method",
+      "name": "Collapsible Method",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Method Title",
+          "default": "Koicha (Thick Matcha)"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Short Description"
+        },
+        {
+          "type": "richtext",
+          "id": "content",
+          "label": "Detailed Content"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Ways to Prepare",
+      "blocks": [
+        {
+          "type": "preparation_method",
+          "settings": {
+            "title": "Usucha",
+            "subtitle": "Classic Matcha",
+            "description": "The standard matcha whisking method, made to be a normal, liquid consistency.",
+            "show_steps": true,
+            "step1_title": "Sift matcha",
+            "step1_details": "2 g (0.07 oz)",
+            "step1_description": "1.5 heaping tea ladles or 1 level teaspoon.",
+            "step2_title": "Add hot water",
+            "step2_details": "60 mL (2 oz) 80°C (176°F)",
+            "step2_description": "Pour boiling water into a teacup to cool it to 80°C, then pour into tea bowl.",
+            "step3_title": "Whisk",
+            "step3_details": "15 seconds",
+            "step3_description": "Whisk vigorously 15 seconds, making an \"M\" shape."
+          }
+        },
+        {
+          "type": "collapsible_method",
+          "settings": {
+            "title": "Koicha (Thick Matcha)"
+          }
+        },
+        {
+          "type": "collapsible_method",
+          "settings": {
+            "title": "Matcha Latte"
+          }
+        },
+        {
+          "type": "collapsible_method",
+          "settings": {
+            "title": "Iced Matcha"
+          }
+        },
+        {
+          "type": "collapsible_method",
+          "settings": {
+            "title": "Iced Matcha Latte"
+          }
+        },
+        {
+          "type": "collapsible_method",
+          "settings": {
+            "title": "Cold-Whisked Matcha"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
