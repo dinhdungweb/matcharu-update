@@ -131,6 +131,87 @@
                 {% if block.settings.content != blank %}
                   <div class="collapsible-method__details">{{ block.settings.content }}</div>
                 {% endif %}
+
+                {% if block.settings.show_steps %}
+                  <div class="preparation-method__steps">
+                    {% if block.settings.step1_title != blank %}
+                      <div class="preparation-step">
+                        <div class="preparation-step__number">1</div>
+                        <div class="preparation-step__content">
+                          <h4 class="preparation-step__title">{{ block.settings.step1_title }}</h4>
+                          {% if block.settings.step1_details != blank %}
+                            <div class="preparation-step__details">{{ block.settings.step1_details }}</div>
+                          {% endif %}
+                          {% if block.settings.step1_description != blank %}
+                            <p class="preparation-step__description">{{ block.settings.step1_description }}</p>
+                          {% endif %}
+                        </div>
+                        {% if block.settings.step1_image != blank %}
+                          <div class="preparation-step__image">
+                            <img src="{{ block.settings.step1_image | image_url: width: 150 }}" 
+                                 alt="{{ block.settings.step1_title }}"
+                                 loading="lazy">
+                          </div>
+                        {% endif %}
+                      </div>
+                    {% endif %}
+
+                    {% if block.settings.step2_title != blank %}
+                      <div class="preparation-step">
+                        <div class="preparation-step__number">2</div>
+                        <div class="preparation-step__content">
+                          <h4 class="preparation-step__title">{{ block.settings.step2_title }}</h4>
+                          {% if block.settings.step2_details != blank %}
+                            <div class="preparation-step__details">{{ block.settings.step2_details }}</div>
+                          {% endif %}
+                          {% if block.settings.step2_description != blank %}
+                            <p class="preparation-step__description">{{ block.settings.step2_description }}</p>
+                          {% endif %}
+                        </div>
+                        {% if block.settings.step2_image != blank %}
+                          <div class="preparation-step__image">
+                            <img src="{{ block.settings.step2_image | image_url: width: 150 }}" 
+                                 alt="{{ block.settings.step2_title }}"
+                                 loading="lazy">
+                          </div>
+                        {% endif %}
+                      </div>
+                    {% endif %}
+
+                    {% if block.settings.step3_title != blank %}
+                      <div class="preparation-step">
+                        <div class="preparation-step__number">3</div>
+                        <div class="preparation-step__content">
+                          <h4 class="preparation-step__title">{{ block.settings.step3_title }}</h4>
+                          {% if block.settings.step3_details != blank %}
+                            <div class="preparation-step__details">{{ block.settings.step3_details }}</div>
+                          {% endif %}
+                          {% if block.settings.step3_description != blank %}
+                            <p class="preparation-step__description">{{ block.settings.step3_description }}</p>
+                          {% endif %}
+                        </div>
+                        {% if block.settings.step3_image != blank %}
+                          <div class="preparation-step__image">
+                            <img src="{{ block.settings.step3_image | image_url: width: 150 }}" 
+                                 alt="{{ block.settings.step3_title }}"
+                                 loading="lazy">
+                          </div>
+                        {% endif %}
+                      </div>
+                    {% endif %}
+                  </div>
+                {% endif %}
+
+                {% if block.settings.video_url != blank %}
+                  <div class="preparation-method__video">
+                    <button class="preparation-method__video-btn" data-video-url="{{ block.settings.video_url }}">
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path d="M8 5v14l11-7z" fill="currentColor"/>
+                      </svg>
+                      {{ block.settings.video_text | default: 'Play video' }}
+                    </button>
+                  </div>
+                {% endif %}
               </div>
             </div>
         {% endcase %}
@@ -367,6 +448,99 @@ document.addEventListener('DOMContentLoaded', function() {
           "type": "richtext",
           "id": "content",
           "label": "Detailed Content"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_steps",
+          "label": "Show preparation steps",
+          "default": false
+        },
+        {
+          "type": "header",
+          "content": "Step 1"
+        },
+        {
+          "type": "text",
+          "id": "step1_title",
+          "label": "Step 1 Title"
+        },
+        {
+          "type": "text",
+          "id": "step1_details",
+          "label": "Step 1 Details"
+        },
+        {
+          "type": "textarea",
+          "id": "step1_description",
+          "label": "Step 1 Description"
+        },
+        {
+          "type": "image_picker",
+          "id": "step1_image",
+          "label": "Step 1 Image"
+        },
+        {
+          "type": "header",
+          "content": "Step 2"
+        },
+        {
+          "type": "text",
+          "id": "step2_title",
+          "label": "Step 2 Title"
+        },
+        {
+          "type": "text",
+          "id": "step2_details",
+          "label": "Step 2 Details"
+        },
+        {
+          "type": "textarea",
+          "id": "step2_description",
+          "label": "Step 2 Description"
+        },
+        {
+          "type": "image_picker",
+          "id": "step2_image",
+          "label": "Step 2 Image"
+        },
+        {
+          "type": "header",
+          "content": "Step 3"
+        },
+        {
+          "type": "text",
+          "id": "step3_title",
+          "label": "Step 3 Title"
+        },
+        {
+          "type": "text",
+          "id": "step3_details",
+          "label": "Step 3 Details"
+        },
+        {
+          "type": "textarea",
+          "id": "step3_description",
+          "label": "Step 3 Description"
+        },
+        {
+          "type": "image_picker",
+          "id": "step3_image",
+          "label": "Step 3 Image"
+        },
+        {
+          "type": "header",
+          "content": "Video"
+        },
+        {
+          "type": "url",
+          "id": "video_url",
+          "label": "Video URL"
+        },
+        {
+          "type": "text",
+          "id": "video_text",
+          "label": "Video Button Text",
+          "default": "Play video"
         }
       ]
     }
