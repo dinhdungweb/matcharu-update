@@ -258,12 +258,19 @@
             "content": "<p>{{ product.metafields.custom.how_to_use | metafield_tag }}</p>",
             "page": ""
           }
+        },
+        "ways_to_prepare_R3ELy6": {
+          "type": "ways_to_prepare",
+          "settings": {
+            "title": "Ways to Prepare"
+          }
         }
       },
       "block_order": [
         "5ff6a4f5-c591-4a3f-bb68-b1efa1c91ab5",
         "de7d437d-d088-49b0-9426-0e78b2a44fd7",
-        "cc1f49b6-1977-4f1f-9ab8-719556bd5832"
+        "cc1f49b6-1977-4f1f-9ab8-719556bd5832",
+        "ways_to_prepare_R3ELy6"
       ],
       "settings": {
         "container": "container",
