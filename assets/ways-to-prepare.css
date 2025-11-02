@@ -488,3 +488,244 @@
 .ways-to-prepare.color-inverse-color-scheme .collapsible-method__content {
   border-color: #e0e0e0;
 }
+
+/* Step Modal Styles */
+.step-modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+}
+
+.step-modal__overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(4px);
+}
+
+.step-modal__container {
+  position: relative;
+  width: 90%;
+  max-width: 800px;
+  max-height: 90vh;
+  margin: 5vh auto;
+  background-color: #ffffff;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  animation: modalSlideIn 0.3s ease-out;
+}
+
+@keyframes modalSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.step-modal__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 24px;
+  background-color: #f8f9fa;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.step-modal__title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin: 0;
+}
+
+.step-modal__close {
+  background: none;
+  border: none;
+  font-size: 24px;
+  color: #666;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.step-modal__close:hover {
+  background-color: #e9ecef;
+  color: #333;
+}
+
+.step-modal__content {
+  padding: 24px;
+  max-height: calc(90vh - 160px);
+  overflow-y: auto;
+}
+
+.step-modal__image {
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto 24px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.step-modal__image img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.step-modal__step-info {
+  text-align: center;
+}
+
+.step-modal__step-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background-color: transparent;
+  border: 2px solid #4CAF50;
+  border-radius: 50%;
+  color: #4CAF50;
+  font-weight: 600;
+  font-size: 1rem;
+  margin-bottom: 16px;
+}
+
+.step-modal__step-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin-bottom: 12px;
+}
+
+.step-modal__step-details {
+  font-size: 1rem;
+  color: #4CAF50;
+  font-weight: 500;
+  margin-bottom: 16px;
+}
+
+.step-modal__step-description {
+  font-size: 1rem;
+  color: #666;
+  line-height: 1.6;
+  margin-bottom: 32px;
+}
+
+.step-modal__navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 24px;
+  background-color: #f8f9fa;
+  border-top: 1px solid #e9ecef;
+}
+
+.step-modal__nav-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 20px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.step-modal__nav-btn:hover {
+  background-color: #45a049;
+  transform: translateY(-1px);
+}
+
+.step-modal__nav-btn:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.step-modal__nav-btn--prev {
+  background-color: #6c757d;
+}
+
+.step-modal__nav-btn--prev:hover {
+  background-color: #5a6268;
+}
+
+.step-modal__dots {
+  display: flex;
+  gap: 8px;
+}
+
+.step-modal__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #dee2e6;
+  transition: background-color 0.2s ease;
+}
+
+.step-modal__dot--active {
+  background-color: #4CAF50;
+}
+
+/* Clickable image cursor */
+.step-image-clickable {
+  cursor: pointer;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.step-image-clickable:hover {
+  transform: scale(1.05);
+  opacity: 0.9;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .step-modal__container {
+    width: 95%;
+    margin: 2.5vh auto;
+    max-height: 95vh;
+  }
+  
+  .step-modal__header,
+  .step-modal__navigation {
+    padding: 16px 20px;
+  }
+  
+  .step-modal__content {
+    padding: 20px;
+    max-height: calc(95vh - 140px);
+  }
+  
+  .step-modal__title {
+    font-size: 1.25rem;
+  }
+  
+  .step-modal__step-title {
+    font-size: 1.25rem;
+  }
+  
+  .step-modal__nav-btn {
+    padding: 10px 16px;
+    font-size: 0.9rem;
+  }
+}
