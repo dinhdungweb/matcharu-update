@@ -401,16 +401,17 @@ document.addEventListener('DOMContentLoaded', function() {
   const nextBtn = document.getElementById('nextStep');
   const modalTitle = document.getElementById('modalTitle');
   const modalImage = document.getElementById('modalImage');
-  const stepNumber = document.getElementById('stepNumber');
-  const stepTitle = document.getElementById('stepTitle');
-  const stepDetails = document.getElementById('stepDetails');
-  const stepDescription = document.getElementById('stepDescription');
+  const currentStepElement = document.getElementById('currentStep');
+  const totalStepsElement = document.getElementById('totalSteps');
+  const stepTitle = document.getElementById('modalStepTitle');
+  const stepDetails = document.getElementById('modalStepDetails');
+  const stepDescription = document.getElementById('modalStepDescription');
   const stepDots = document.getElementById('stepDots');
 
   // Check if modal elements exist before initializing
   if (!modal || !modalOverlay || !closeBtn || !prevBtn || !nextBtn || 
-      !modalTitle || !modalImage || !stepNumber || !stepTitle || 
-      !stepDetails || !stepDescription || !stepDots) {
+      !modalTitle || !modalImage || !currentStepElement || !totalStepsElement || 
+      !stepTitle || !stepDetails || !stepDescription || !stepDots) {
     console.log('Modal elements not found, skipping modal initialization');
     return;
   }
@@ -460,7 +461,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const step = stepData.steps[currentStep - 1];
     
     if (modalTitle) modalTitle.textContent = stepData.methodTitle;
-    if (stepNumber) stepNumber.textContent = currentStep;
+    if (currentStepElement) currentStepElement.textContent = currentStep;
+    if (totalStepsElement) totalStepsElement.textContent = totalSteps;
     if (stepTitle) stepTitle.textContent = step.title;
     if (stepDetails) stepDetails.textContent = step.details;
     if (stepDescription) stepDescription.textContent = step.description;
