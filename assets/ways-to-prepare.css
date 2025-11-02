@@ -234,6 +234,113 @@
   margin-bottom: 0;
 }
 
+/* Collapsible Method Steps */
+.collapsible-method__steps {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.collapsible-step {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 16px;
+  background-color: #333333;
+  border-radius: 8px;
+  border-left: 3px solid #4CAF50;
+}
+
+.collapsible-step__number {
+  background-color: #4CAF50;
+  color: #ffffff;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 0.9rem;
+  flex-shrink: 0;
+}
+
+.collapsible-step__content {
+  flex: 1;
+}
+
+.collapsible-step__title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: #ffffff;
+}
+
+.collapsible-step__details {
+  background-color: #4a4a4a;
+  color: #4CAF50;
+  padding: 4px 10px;
+  border-radius: 16px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  display: inline-block;
+  margin-bottom: 6px;
+}
+
+.collapsible-step__description {
+  font-size: 0.9rem;
+  color: #cccccc;
+  line-height: 1.4;
+  margin: 0;
+}
+
+.collapsible-step__image {
+  flex-shrink: 0;
+  width: 70px;
+  height: 70px;
+  border-radius: 6px;
+  overflow: hidden;
+  background-color: #4a4a4a;
+}
+
+.collapsible-step__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Collapsible Method Video Button */
+.collapsible-method__video {
+  margin-top: 20px;
+  text-align: right;
+}
+
+.collapsible-method__video-btn {
+  background: transparent;
+  color: #4CAF50;
+  border: 1px solid #4CAF50;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.3s ease;
+}
+
+.collapsible-method__video-btn:hover {
+  background-color: #4CAF50;
+  color: #ffffff;
+}
+
+.collapsible-method__video-btn svg {
+  width: 14px;
+  height: 14px;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
   .ways-to-prepare {
@@ -271,6 +378,25 @@
   .collapsible-method__content {
     padding: 0 20px 20px 20px;
   }
+
+  /* Collapsible steps responsive */
+  .collapsible-step {
+    flex-direction: column;
+    gap: 12px;
+    padding: 14px;
+  }
+
+  .collapsible-step__image {
+    width: 60px;
+    height: 60px;
+    align-self: flex-start;
+  }
+
+  .collapsible-step__number {
+    width: 24px;
+    height: 24px;
+    font-size: 0.8rem;
+  }
 }
 
 @media (max-width: 480px) {
@@ -296,6 +422,36 @@
 
   .collapsible-method__content {
     padding: 0 16px 16px 16px;
+  }
+
+  /* Collapsible steps mobile */
+  .collapsible-step {
+    padding: 12px;
+    gap: 10px;
+  }
+
+  .collapsible-step__image {
+    width: 50px;
+    height: 50px;
+  }
+
+  .collapsible-step__number {
+    width: 22px;
+    height: 22px;
+    font-size: 0.75rem;
+  }
+
+  .collapsible-step__title {
+    font-size: 1rem;
+  }
+
+  .collapsible-step__details {
+    font-size: 0.8rem;
+    padding: 3px 8px;
+  }
+
+  .collapsible-step__description {
+    font-size: 0.85rem;
   }
 }
 

@@ -240,7 +240,7 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 
   // Video button functionality
-  const videoButtons = document.querySelectorAll('.preparation-method__video-btn');
+  const videoButtons = document.querySelectorAll('.preparation-method__video-btn, .collapsible-method__video-btn');
   videoButtons.forEach(button => {
     button.addEventListener('click', function() {
       const videoUrl = this.dataset.videoUrl;
