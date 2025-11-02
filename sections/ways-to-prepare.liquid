@@ -407,6 +407,14 @@ document.addEventListener('DOMContentLoaded', function() {
   const stepDescription = document.getElementById('stepDescription');
   const stepDots = document.getElementById('stepDots');
 
+  // Check if modal elements exist before initializing
+  if (!modal || !modalOverlay || !closeBtn || !prevBtn || !nextBtn || 
+      !modalTitle || !modalImage || !stepNumber || !stepTitle || 
+      !stepDetails || !stepDescription || !stepDots) {
+    console.log('Modal elements not found, skipping modal initialization');
+    return;
+  }
+
   let currentStep = 1;
   let totalSteps = 3;
   let stepData = {};
@@ -451,23 +459,25 @@ document.addEventListener('DOMContentLoaded', function() {
   function updateModalContent() {
     const step = stepData.steps[currentStep - 1];
     
-    modalTitle.textContent = stepData.methodTitle;
-    stepNumber.textContent = currentStep;
-    stepTitle.textContent = step.title;
-    stepDetails.textContent = step.details;
-    stepDescription.textContent = step.description;
+    if (modalTitle) modalTitle.textContent = stepData.methodTitle;
+    if (stepNumber) stepNumber.textContent = currentStep;
+    if (stepTitle) stepTitle.textContent = step.title;
+    if (stepDetails) stepDetails.textContent = step.details;
+    if (stepDescription) stepDescription.textContent = step.description;
     
-    if (step.image) {
-      modalImage.src = step.image;
-      modalImage.alt = step.title;
-      modalImage.style.display = 'block';
-    } else {
-      modalImage.style.display = 'none';
+    if (modalImage) {
+      if (step.image) {
+        modalImage.src = step.image;
+        modalImage.alt = step.title;
+        modalImage.style.display = 'block';
+      } else {
+        modalImage.style.display = 'none';
+      }
     }
 
     // Update navigation buttons
-    prevBtn.disabled = currentStep === 1;
-    nextBtn.disabled = currentStep === totalSteps;
+    if (prevBtn) prevBtn.disabled = currentStep === 1;
+    if (nextBtn) nextBtn.disabled = currentStep === totalSteps;
 
     // Update dots
     updateDots();
@@ -475,6 +485,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Function to create dots
   function createDots() {
+    if (!stepDots) return;
+    
     stepDots.innerHTML = '';
     for (let i = 1; i <= totalSteps; i++) {
       const dot = document.createElement('div');
@@ -488,6 +500,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Function to update dots
   function updateDots() {
+    if (!stepDots) return;
+    
     const dots = stepDots.querySelectorAll('.step-modal__dot');
     dots.forEach((dot, index) => {
       if (index + 1 === currentStep) {
@@ -500,7 +514,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Function to close modal
   function closeModal() {
-    modal.style.display = 'none';
+    if (modal) modal.style.display = 'none';
     document.body.style.overflow = '';
   }
 
@@ -513,26 +527,30 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 
   // Event listeners for modal controls
-  closeBtn.addEventListener('click', closeModal);
-  modalOverlay.addEventListener('click', closeModal);
+  if (closeBtn) closeBtn.addEventListener('click', closeModal);
+  if (modalOverlay) modalOverlay.addEventListener('click', closeModal);
 
-  prevBtn.addEventListener('click', function() {
-    if (currentStep > 1) {
-      currentStep--;
-      updateModalContent();
-    }
-  });
+  if (prevBtn) {
+    prevBtn.addEventListener('click', function() {
+      if (currentStep > 1) {
+        currentStep--;
+        updateModalContent();
+      }
+    });
+  }
 
-  nextBtn.addEventListener('click', function() {
-    if (currentStep < totalSteps) {
-      currentStep++;
-      updateModalContent();
-    }
-  });
+  if (nextBtn) {
+    nextBtn.addEventListener('click', function() {
+      if (currentStep < totalSteps) {
+        currentStep++;
+        updateModalContent();
+      }
+    });
+  }
 
   // Keyboard navigation
   document.addEventListener('keydown', function(e) {
-    if (modal.style.display === 'block') {
+    if (modal && modal.style.display === 'block') {
       if (e.key === 'Escape') {
         closeModal();
       } else if (e.key === 'ArrowLeft' && currentStep > 1) {
