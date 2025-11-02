@@ -148,6 +148,8 @@
                               {%- endif -%}
                             {% endif %}
                         {%- endcase -%}
+                      {%- when 'ways_to_prepare' -%}
+                        {% render 'ways-to-prepare-content', block: block %}
                     {%- endcase -%}
                   </div>
                 </div>
@@ -193,7 +195,19 @@
                           {%- if bk_st.page != blank -%}
                             {{ pages[bk_st.page].content }}
                           {%- endif -%}
+                        {% when 'content_custom' %}
+                          {% if infomation_meta.value.information_text != blank %}
+                            {{ infomation_meta.value.information_text }}
+                          {% elsif infomation_meta.value.information_in_page != blank %}
+                            {{ pages[infomation_meta.value.information_in_page].content }}
+                          {% else %}
+                            {%- if bk_st.page != blank -%}
+                              {{ pages[bk_st.page].content }}
+                            {%- endif -%}
+                          {% endif %}
                       {%- endcase -%}
+                    {%- when 'ways_to_prepare' -%}
+                      {% render 'ways-to-prepare-content', block: block %}
                   {%- endcase -%}
                 </div>
               </div>
@@ -373,6 +387,19 @@
           "type": "page",
           "id": "page",
           "label": "t:sections.product-information-tabs.blocks.custom_tab.settings.page.label"
+        }
+      ]
+    },
+    {
+      "type": "ways_to_prepare",
+      "name": "Ways to Prepare",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Tab Title",
+          "default": "Ways to Prepare"
         }
       ]
     }

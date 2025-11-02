@@ -283,7 +283,7 @@
           "type": "collapsible_method",
           "settings": {
             "title": "Usucha (Classic Matcha)",
-            "description": "The standard matcha whisking method, made to be a normal, liquid consistency.",
+            "description": "",
             "content": "",
             "show_steps": true,
             "step1_title": "Sift matcha",
@@ -478,7 +478,7 @@
         "heading": "Ways to Prepare",
         "description": "<p>Discover different methods to prepare and enjoy your matcha, from traditional ceremonies to modern variations.</p>",
         "container": "container",
-        "color_scheme": "default-color-scheme"
+        "color_scheme": "inverse-color-scheme"
       }
     },
     "1759295770eaf51224": {

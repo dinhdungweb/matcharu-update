@@ -1,0 +1,530 @@
+{{ 'ways-to-prepare.css' | asset_url | stylesheet_tag }}
+
+{%- comment -%}
+  Renders Ways to Prepare content for product information tabs
+  
+  Accepts:
+  - block: {Object} Block object from product-information-tabs section
+  
+  Usage:
+  {% render 'ways-to-prepare-content', block: block %}
+{%- endcomment -%}
+
+{%- liquid
+  assign ways_section = sections['ways-to-prepare']
+  if ways_section == blank
+    for section in sections
+      if section.type == 'ways-to-prepare'
+        assign ways_section = section
+        break
+      endif
+    endfor
+  endif
+-%}
+
+{%- if ways_section and ways_section.blocks.size > 0 -%}
+  <div class="ways-to-prepare__content">
+    {% for block in ways_section.blocks %}
+      {% case block.type %}
+        {% when 'preparation_method' %}
+          <div class="preparation-method" {{ block.shopify_attributes }}>
+            <div class="preparation-method__header">
+              <h3 class="preparation-method__title">
+                {{ block.settings.title }}
+                {% if block.settings.subtitle != blank %}
+                  <span class="preparation-method__subtitle">({{ block.settings.subtitle }})</span>
+                {% endif %}
+              </h3>
+              {% if block.settings.description != blank %}
+                <p class="preparation-method__description">{{ block.settings.description }}</p>
+              {% endif %}
+            </div>
+
+            {% if block.settings.show_steps %}
+              <div class="preparation-method__steps">
+                {% if block.settings.step1_title != blank %}
+                  <div class="preparation-step">
+                    <div class="preparation-step__number">1</div>
+                    <div class="preparation-step__content">
+                      <h4 class="preparation-step__title">{{ block.settings.step1_title }}</h4>
+                      {% if block.settings.step1_details != blank %}
+                        <div class="preparation-step__details">{{ block.settings.step1_details }}</div>
+                      {% endif %}
+                      {% if block.settings.step1_description != blank %}
+                        <p class="preparation-step__description">{{ block.settings.step1_description }}</p>
+                      {% endif %}
+                    </div>
+                    {% if block.settings.step1_image != blank %}
+                      <div class="preparation-step__image">
+                        <img src="{{ block.settings.step1_image | image_url: width: 150 }}" 
+                             alt="{{ block.settings.step1_title }}"
+                             loading="lazy"
+                             class="step-image-clickable"
+                             data-method-title="{{ block.settings.title }}"
+                             data-step="1"
+                             data-step-title="{{ block.settings.step1_title }}"
+                             data-step-details="{{ block.settings.step1_details }}"
+                             data-step-description="{{ block.settings.step1_description }}"
+                             data-step-image="{{ block.settings.step1_image | image_url: width: 400 }}"
+                             data-step2-title="{{ block.settings.step2_title }}"
+                             data-step2-details="{{ block.settings.step2_details }}"
+                             data-step2-description="{{ block.settings.step2_description }}"
+                             data-step2-image="{{ block.settings.step2_image | image_url: width: 400 }}"
+                             data-step3-title="{{ block.settings.step3_title }}"
+                             data-step3-details="{{ block.settings.step3_details }}"
+                             data-step3-description="{{ block.settings.step3_description }}"
+                             data-step3-image="{{ block.settings.step3_image | image_url: width: 400 }}">
+                      </div>
+                    {% endif %}
+                  </div>
+                {% endif %}
+
+                {% if block.settings.step2_title != blank %}
+                  <div class="preparation-step">
+                    <div class="preparation-step__number">2</div>
+                    <div class="preparation-step__content">
+                      <h4 class="preparation-step__title">{{ block.settings.step2_title }}</h4>
+                      {% if block.settings.step2_details != blank %}
+                        <div class="preparation-step__details">{{ block.settings.step2_details }}</div>
+                      {% endif %}
+                      {% if block.settings.step2_description != blank %}
+                        <p class="preparation-step__description">{{ block.settings.step2_description }}</p>
+                      {% endif %}
+                    </div>
+                    {% if block.settings.step2_image != blank %}
+                      <div class="preparation-step__image">
+                        <img src="{{ block.settings.step2_image | image_url: width: 150 }}" 
+                             alt="{{ block.settings.step2_title }}"
+                             loading="lazy"
+                             class="step-image-clickable"
+                             data-method-title="{{ block.settings.title }}"
+                             data-step="2"
+                             data-step-title="{{ block.settings.step1_title }}"
+                             data-step-details="{{ block.settings.step1_details }}"
+                             data-step-description="{{ block.settings.step1_description }}"
+                             data-step-image="{{ block.settings.step1_image | image_url: width: 400 }}"
+                             data-step2-title="{{ block.settings.step2_title }}"
+                             data-step2-details="{{ block.settings.step2_details }}"
+                             data-step2-description="{{ block.settings.step2_description }}"
+                             data-step2-image="{{ block.settings.step2_image | image_url: width: 400 }}"
+                             data-step3-title="{{ block.settings.step3_title }}"
+                             data-step3-details="{{ block.settings.step3_details }}"
+                             data-step3-description="{{ block.settings.step3_description }}"
+                             data-step3-image="{{ block.settings.step3_image | image_url: width: 400 }}">
+                      </div>
+                    {% endif %}
+                  </div>
+                {% endif %}
+
+                {% if block.settings.step3_title != blank %}
+                  <div class="preparation-step">
+                    <div class="preparation-step__number">3</div>
+                    <div class="preparation-step__content">
+                      <h4 class="preparation-step__title">{{ block.settings.step3_title }}</h4>
+                      {% if block.settings.step3_details != blank %}
+                        <div class="preparation-step__details">{{ block.settings.step3_details }}</div>
+                      {% endif %}
+                      {% if block.settings.step3_description != blank %}
+                        <p class="preparation-step__description">{{ block.settings.step3_description }}</p>
+                      {% endif %}
+                    </div>
+                    {% if block.settings.step3_image != blank %}
+                      <div class="preparation-step__image">
+                        <img src="{{ block.settings.step3_image | image_url: width: 150 }}" 
+                             alt="{{ block.settings.step3_title }}"
+                             loading="lazy"
+                             class="step-image-clickable"
+                             data-method-title="{{ block.settings.title }}"
+                             data-step="3"
+                             data-step-title="{{ block.settings.step1_title }}"
+                             data-step-details="{{ block.settings.step1_details }}"
+                             data-step-description="{{ block.settings.step1_description }}"
+                             data-step-image="{{ block.settings.step1_image | image_url: width: 400 }}"
+                             data-step2-title="{{ block.settings.step2_title }}"
+                             data-step2-details="{{ block.settings.step2_details }}"
+                             data-step2-description="{{ block.settings.step2_description }}"
+                             data-step2-image="{{ block.settings.step2_image | image_url: width: 400 }}"
+                             data-step3-title="{{ block.settings.step3_title }}"
+                             data-step3-details="{{ block.settings.step3_details }}"
+                             data-step3-description="{{ block.settings.step3_description }}"
+                             data-step3-image="{{ block.settings.step3_image | image_url: width: 400 }}">
+                      </div>
+                    {% endif %}
+                  </div>
+                {% endif %}
+              </div>
+            {% endif %}
+
+            {% if block.settings.video_url != blank %}
+              <div class="preparation-method__video">
+                <button class="preparation-method__video-btn" data-video-url="{{ block.settings.video_url }}">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <path d="M8 5v14l11-7z" fill="currentColor"/>
+                  </svg>
+                  {{ block.settings.video_text | default: 'Play video' }}
+                </button>
+              </div>
+            {% endif %}
+          </div>
+
+        {% when 'collapsible_method' %}
+          <div class="collapsible-method" {{ block.shopify_attributes }}>
+            <button class="collapsible-method__toggle" type="button" data-toggle="collapse">
+              <span class="collapsible-method__title">{{ block.settings.title }}</span>
+              <svg class="collapsible-method__icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+            <div class="collapsible-method__content">
+              {% if block.settings.description != blank %}
+                <p class="collapsible-method__description">{{ block.settings.description }}</p>
+              {% endif %}
+              {% if block.settings.content != blank %}
+                <div class="collapsible-method__details">{{ block.settings.content }}</div>
+              {% endif %}
+
+              {% if block.settings.show_steps %}
+                <div class="preparation-method__steps">
+                  {% if block.settings.step1_title != blank %}
+                    <div class="preparation-step">
+                      <div class="preparation-step__number">1</div>
+                      <div class="preparation-step__content">
+                        <h4 class="preparation-step__title">{{ block.settings.step1_title }}</h4>
+                        {% if block.settings.step1_details != blank %}
+                          <div class="preparation-step__details">{{ block.settings.step1_details }}</div>
+                        {% endif %}
+                        {% if block.settings.step1_description != blank %}
+                          <p class="preparation-step__description">{{ block.settings.step1_description }}</p>
+                        {% endif %}
+                      </div>
+                      {% if block.settings.step1_image != blank %}
+                        <div class="preparation-step__image">
+                          <img src="{{ block.settings.step1_image | image_url: width: 150 }}" 
+                               alt="{{ block.settings.step1_title }}"
+                               loading="lazy"
+                               class="step-image-clickable"
+                               data-method-title="{{ block.settings.title }}"
+                               data-step="1"
+                               data-step-title="{{ block.settings.step1_title }}"
+                               data-step-details="{{ block.settings.step1_details }}"
+                               data-step-description="{{ block.settings.step1_description }}"
+                               data-step-image="{{ block.settings.step1_image | image_url: width: 400 }}"
+                               data-step2-title="{{ block.settings.step2_title }}"
+                               data-step2-details="{{ block.settings.step2_details }}"
+                               data-step2-description="{{ block.settings.step2_description }}"
+                               data-step2-image="{{ block.settings.step2_image | image_url: width: 400 }}"
+                               data-step3-title="{{ block.settings.step3_title }}"
+                               data-step3-details="{{ block.settings.step3_details }}"
+                               data-step3-description="{{ block.settings.step3_description }}"
+                               data-step3-image="{{ block.settings.step3_image | image_url: width: 400 }}">
+                        </div>
+                      {% endif %}
+                    </div>
+                  {% endif %}
+
+                  {% if block.settings.step2_title != blank %}
+                    <div class="preparation-step">
+                      <div class="preparation-step__number">2</div>
+                      <div class="preparation-step__content">
+                        <h4 class="preparation-step__title">{{ block.settings.step2_title }}</h4>
+                        {% if block.settings.step2_details != blank %}
+                          <div class="preparation-step__details">{{ block.settings.step2_details }}</div>
+                        {% endif %}
+                        {% if block.settings.step2_description != blank %}
+                          <p class="preparation-step__description">{{ block.settings.step2_description }}</p>
+                        {% endif %}
+                      </div>
+                      {% if block.settings.step2_image != blank %}
+                        <div class="preparation-step__image">
+                          <img src="{{ block.settings.step2_image | image_url: width: 150 }}" 
+                               alt="{{ block.settings.step2_title }}"
+                               loading="lazy"
+                               class="step-image-clickable"
+                               data-method-title="{{ block.settings.title }}"
+                               data-step="2"
+                               data-step-title="{{ block.settings.step1_title }}"
+                               data-step-details="{{ block.settings.step1_details }}"
+                               data-step-description="{{ block.settings.step1_description }}"
+                               data-step-image="{{ block.settings.step1_image | image_url: width: 400 }}"
+                               data-step2-title="{{ block.settings.step2_title }}"
+                               data-step2-details="{{ block.settings.step2_details }}"
+                               data-step2-description="{{ block.settings.step2_description }}"
+                               data-step2-image="{{ block.settings.step2_image | image_url: width: 400 }}"
+                               data-step3-title="{{ block.settings.step3_title }}"
+                               data-step3-details="{{ block.settings.step3_details }}"
+                               data-step3-description="{{ block.settings.step3_description }}"
+                               data-step3-image="{{ block.settings.step3_image | image_url: width: 400 }}">
+                        </div>
+                      {% endif %}
+                    </div>
+                  {% endif %}
+
+                  {% if block.settings.step3_title != blank %}
+                    <div class="preparation-step">
+                      <div class="preparation-step__number">3</div>
+                      <div class="preparation-step__content">
+                        <h4 class="preparation-step__title">{{ block.settings.step3_title }}</h4>
+                        {% if block.settings.step3_details != blank %}
+                          <div class="preparation-step__details">{{ block.settings.step3_details }}</div>
+                        {% endif %}
+                        {% if block.settings.step3_description != blank %}
+                          <p class="preparation-step__description">{{ block.settings.step3_description }}</p>
+                        {% endif %}
+                      </div>
+                      {% if block.settings.step3_image != blank %}
+                        <div class="preparation-step__image">
+                          <img src="{{ block.settings.step3_image | image_url: width: 150 }}" 
+                               alt="{{ block.settings.step3_title }}"
+                               loading="lazy"
+                               class="step-image-clickable"
+                               data-method-title="{{ block.settings.title }}"
+                               data-step="3"
+                               data-step-title="{{ block.settings.step1_title }}"
+                               data-step-details="{{ block.settings.step1_details }}"
+                               data-step-description="{{ block.settings.step1_description }}"
+                               data-step-image="{{ block.settings.step1_image | image_url: width: 400 }}"
+                               data-step2-title="{{ block.settings.step2_title }}"
+                               data-step2-details="{{ block.settings.step2_details }}"
+                               data-step2-description="{{ block.settings.step2_description }}"
+                               data-step2-image="{{ block.settings.step2_image | image_url: width: 400 }}"
+                               data-step3-title="{{ block.settings.step3_title }}"
+                               data-step3-details="{{ block.settings.step3_details }}"
+                               data-step3-description="{{ block.settings.step3_description }}"
+                               data-step3-image="{{ block.settings.step3_image | image_url: width: 400 }}">
+                        </div>
+                      {% endif %}
+                    </div>
+                  {% endif %}
+                </div>
+              {% endif %}
+            </div>
+          </div>
+      {% endcase %}
+    {% endfor %}
+  </div>
+
+  <!-- Include the modal and JavaScript from the original section -->
+  <div id="stepModal" class="step-modal">
+    <div class="step-modal__overlay"></div>
+    <div class="step-modal__content">
+      <div class="step-modal__header">
+        <h3 id="modalStepTitle" class="step-modal__title"></h3>
+        <button class="step-modal__close" aria-label="Close modal">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </div>
+      <div class="step-modal__body">
+        <div class="step-modal__image">
+          <img id="modalStepImage" src="" alt="">
+        </div>
+        <div class="step-modal__info">
+          <div class="step-modal__step-info">
+            <span>Step <span id="currentStep">1</span> of <span id="totalSteps">3</span></span>
+          </div>
+          <div id="modalStepDetails" class="step-modal__details"></div>
+          <div id="modalStepDescription" class="step-modal__description"></div>
+        </div>
+      </div>
+      <div class="step-modal__navigation">
+        <button id="prevStep" class="step-modal__nav-btn step-modal__nav-btn--prev">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+            <path d="M15 18l-6-6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Previous
+        </button>
+        <div id="stepDots" class="step-modal__dots"></div>
+        <button id="nextStep" class="step-modal__nav-btn step-modal__nav-btn--next">
+          Next
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+            <path d="M9 18l6-6-6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Include the JavaScript functionality from the original section
+    document.addEventListener('DOMContentLoaded', function() {
+      // Modal functionality (same as in ways-to-prepare.liquid)
+      const modal = document.getElementById('stepModal');
+      const modalOverlay = document.querySelector('.step-modal__overlay');
+      const closeBtn = document.querySelector('.step-modal__close');
+      const prevBtn = document.getElementById('prevStep');
+      const nextBtn = document.getElementById('nextStep');
+      const stepImages = document.querySelectorAll('.step-image-clickable');
+      
+      // Null safety checks
+      if (!modal) return;
+      
+      const stepTitle = document.getElementById('modalStepTitle');
+      const stepImage = document.getElementById('modalStepImage');
+      const stepDetails = document.getElementById('modalStepDetails');
+      const stepDescription = document.getElementById('modalStepDescription');
+      const currentStepElement = document.getElementById('currentStep');
+      const totalStepsElement = document.getElementById('totalSteps');
+      const stepDots = document.getElementById('stepDots');
+      
+      let currentData = {};
+      let currentStep = 1;
+      let totalSteps = 3;
+      
+      function createDots() {
+        if (!stepDots) return;
+        
+        stepDots.innerHTML = '';
+        for (let i = 1; i <= totalSteps; i++) {
+          const dot = document.createElement('button');
+          dot.className = `step-dot ${i === currentStep ? 'active' : ''}`;
+          dot.setAttribute('data-step', i);
+          dot.addEventListener('click', () => goToStep(i));
+          stepDots.appendChild(dot);
+        }
+      }
+      
+      function updateDots() {
+        if (!stepDots) return;
+        
+        const dots = stepDots.querySelectorAll('.step-dot');
+        dots.forEach((dot, index) => {
+          dot.classList.toggle('active', index + 1 === currentStep);
+        });
+      }
+      
+      function updateModalContent() {
+        if (!stepTitle || !stepImage || !stepDetails || !stepDescription || !currentStepElement || !totalStepsElement) return;
+        
+        const stepKey = currentStep === 1 ? '' : currentStep.toString();
+        const titleKey = `step${stepKey}Title`;
+        const detailsKey = `step${stepKey}Details`;
+        const descriptionKey = `step${stepKey}Description`;
+        const imageKey = `step${stepKey}Image`;
+        
+        stepTitle.textContent = currentData[titleKey] || '';
+        stepDetails.textContent = currentData[detailsKey] || '';
+        stepDescription.textContent = currentData[descriptionKey] || '';
+        stepImage.src = currentData[imageKey] || '';
+        stepImage.alt = currentData[titleKey] || '';
+        
+        currentStepElement.textContent = currentStep;
+        totalStepsElement.textContent = totalSteps;
+        
+        updateDots();
+        
+        // Update navigation buttons
+        if (prevBtn) prevBtn.disabled = currentStep === 1;
+        if (nextBtn) nextBtn.disabled = currentStep === totalSteps;
+      }
+      
+      function goToStep(step) {
+        if (step >= 1 && step <= totalSteps) {
+          currentStep = step;
+          updateModalContent();
+        }
+      }
+      
+      function openModal(data, step = 1) {
+        currentData = data;
+        currentStep = step;
+        
+        // Count actual steps
+        totalSteps = 0;
+        for (let i = 1; i <= 3; i++) {
+          const titleKey = i === 1 ? 'stepTitle' : `step${i}Title`;
+          if (data[titleKey]) totalSteps = i;
+        }
+        
+        createDots();
+        updateModalContent();
+        
+        if (modal) {
+          modal.style.display = 'flex';
+          document.body.style.overflow = 'hidden';
+        }
+      }
+      
+      function closeModal() {
+        if (modal) {
+          modal.style.display = 'none';
+          document.body.style.overflow = '';
+        }
+      }
+      
+      // Event listeners with null checks
+      stepImages.forEach(img => {
+        img.addEventListener('click', function() {
+          const data = {
+            methodTitle: this.dataset.methodTitle,
+            stepTitle: this.dataset.stepTitle,
+            stepDetails: this.dataset.stepDetails,
+            stepDescription: this.dataset.stepDescription,
+            stepImage: this.dataset.stepImage,
+            step2Title: this.dataset.step2Title,
+            step2Details: this.dataset.step2Details,
+            step2Description: this.dataset.step2Description,
+            step2Image: this.dataset.step2Image,
+            step3Title: this.dataset.step3Title,
+            step3Details: this.dataset.step3Details,
+            step3Description: this.dataset.step3Description,
+            step3Image: this.dataset.step3Image
+          };
+          
+          const clickedStep = parseInt(this.dataset.step) || 1;
+          openModal(data, clickedStep);
+        });
+      });
+      
+      if (closeBtn) {
+        closeBtn.addEventListener('click', closeModal);
+      }
+      
+      if (modalOverlay) {
+        modalOverlay.addEventListener('click', closeModal);
+      }
+      
+      if (prevBtn) {
+        prevBtn.addEventListener('click', () => goToStep(currentStep - 1));
+      }
+      
+      if (nextBtn) {
+        nextBtn.addEventListener('click', () => goToStep(currentStep + 1));
+      }
+      
+      // Keyboard navigation
+      document.addEventListener('keydown', function(e) {
+        if (!modal || modal.style.display !== 'flex') return;
+        
+        if (e.key === 'Escape') {
+          closeModal();
+        } else if (e.key === 'ArrowLeft') {
+          goToStep(currentStep - 1);
+        } else if (e.key === 'ArrowRight') {
+          goToStep(currentStep + 1);
+        }
+      });
+      
+      // Collapsible functionality
+      const collapsibleToggles = document.querySelectorAll('.collapsible-method__toggle');
+      collapsibleToggles.forEach(toggle => {
+        toggle.addEventListener('click', function() {
+          const content = this.nextElementSibling;
+          const icon = this.querySelector('.collapsible-method__icon');
+          
+          if (content.style.display === 'block') {
+            content.style.display = 'none';
+            this.classList.remove('active');
+            if (icon) icon.style.transform = 'rotate(0deg)';
+          } else {
+            content.style.display = 'block';
+            this.classList.add('active');
+            if (icon) icon.style.transform = 'rotate(180deg)';
+          }
+        });
+      });
+    });
+  </script>
+{%- else -%}
+  <p>No preparation methods available. Please add content to the Ways to Prepare section.</p>
+{%- endif -%}
