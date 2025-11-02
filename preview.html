@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ways to Prepare - Preview</title>
+    <style>
+        body {
+            background-color: #1a1a1a;
+            color: #fff;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            text-align: center;
+            color: #fff;
+            margin-bottom: 30px;
+        }
+        
+        .preparation-method {
+            background-color: #2a2a2a;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            overflow: hidden;
+        }
+        
+        .preparation-method__header {
+            padding: 15px 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #333;
+        }
+        
+        .preparation-method__title {
+            font-size: 16px;
+            font-weight: bold;
+            color: #fff;
+        }
+        
+        .preparation-method__icon {
+            color: #4CAF50;
+            font-size: 18px;
+            transition: transform 0.3s ease;
+        }
+        
+        .preparation-method__content {
+            padding: 20px;
+            display: none;
+        }
+        
+        .preparation-method__content.active {
+            display: block;
+        }
+        
+        .preparation-method__description {
+            color: #ccc;
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+        
+        /* Collapsible Method Steps - Simplified */
+        .collapsible-method__steps {
+            margin-top: 20px;
+        }
+
+        .collapsible-step {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .collapsible-step__number {
+            background: transparent;
+            color: #4CAF50;
+            width: 24px;
+            height: 24px;
+            border: 2px solid #4CAF50;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 12px;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .collapsible-step__content {
+            flex: 1;
+            display: flex;
+            gap: 15px;
+            align-items: flex-start;
+        }
+
+        .collapsible-step__title {
+            font-weight: bold;
+            color: #fff;
+            margin-bottom: 5px;
+            font-size: 16px;
+        }
+
+        .collapsible-step__details {
+            flex: 1;
+        }
+
+        .collapsible-step__description {
+            color: #ccc;
+            font-size: 14px;
+            line-height: 1.4;
+            margin-top: 5px;
+        }
+
+        .collapsible-step__image {
+            width: 80px;
+            height: 60px;
+            border-radius: 8px;
+            object-fit: cover;
+            flex-shrink: 0;
+            background-color: #444;
+        }
+        
+        .collapsible-method__video {
+            margin-top: 20px;
+            text-align: right;
+        }
+        
+        .collapsible-method__video-btn {
+            background: transparent;
+            border: 1px solid #4CAF50;
+            color: #4CAF50;
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+        
+        .collapsible-method__video-btn:hover {
+            background: #4CAF50;
+            color: #fff;
+        }
+        
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .collapsible-step {
+                gap: 12px;
+                margin-bottom: 12px;
+            }
+            
+            .collapsible-step__number {
+                width: 20px;
+                height: 20px;
+                font-size: 11px;
+            }
+            
+            .collapsible-step__image {
+                width: 60px;
+                height: 45px;
+            }
+            
+            .collapsible-step__title {
+                font-size: 14px;
+            }
+            
+            .collapsible-step__description {
+                font-size: 13px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .collapsible-step {
+                gap: 10px;
+                margin-bottom: 10px;
+            }
+            
+            .collapsible-step__number {
+                width: 18px;
+                height: 18px;
+                font-size: 10px;
+            }
+            
+            .collapsible-step__image {
+                width: 50px;
+                height: 38px;
+            }
+            
+            .collapsible-step__title {
+                font-size: 13px;
+            }
+            
+            .collapsible-step__description {
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Ways to Prepare</h1>
+        
+        <!-- Usucha Method - Expanded -->
+        <div class="preparation-method">
+            <div class="preparation-method__header">
+                <span class="preparation-method__title">Usucha (Classic Matcha)</span>
+                <span class="preparation-method__icon">−</span>
+            </div>
+            <div class="preparation-method__content active">
+                <p class="preparation-method__description">
+                    The standard matcha whisking method, made to be a normal, liquid consistency.
+                </p>
+                
+                <div class="collapsible-method__steps">
+                    <div class="collapsible-step">
+                        <div class="collapsible-step__number">1</div>
+                        <div class="collapsible-step__content">
+                            <div class="collapsible-step__details">
+                                <div class="collapsible-step__title">Sift matcha</div>
+                                <div class="collapsible-step__description">2 g (0.07 oz)<br>1.5 heaping tea ladles or 1 level teaspoon.</div>
+                            </div>
+                            <div class="collapsible-step__image"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="collapsible-step">
+                        <div class="collapsible-step__number">2</div>
+                        <div class="collapsible-step__content">
+                            <div class="collapsible-step__details">
+                                <div class="collapsible-step__title">Add hot water</div>
+                                <div class="collapsible-step__description">60 mL (2 oz) 🌡️ 80°C (176°F)<br>Pour boiling water into a teacup to cool it to 80°C, then pour into tea bowl.</div>
+                            </div>
+                            <div class="collapsible-step__image"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="collapsible-step">
+                        <div class="collapsible-step__number">3</div>
+                        <div class="collapsible-step__content">
+                            <div class="collapsible-step__details">
+                                <div class="collapsible-step__title">Whisk</div>
+                                <div class="collapsible-step__description">⏱️ 15 seconds<br>Whisk vigorously 15 seconds, making an "M" shape.</div>
+                            </div>
+                            <div class="collapsible-step__image"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="collapsible-method__video">
+                    <button class="collapsible-method__video-btn">Play video ▷</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Other Methods - Collapsed -->
+        <div class="preparation-method">
+            <div class="preparation-method__header">
+                <span class="preparation-method__title">Koicha (Thick Matcha)</span>
+                <span class="preparation-method__icon">+</span>
+            </div>
+            <div class="preparation-method__content"></div>
+        </div>
+        
+        <div class="preparation-method">
+            <div class="preparation-method__header">
+                <span class="preparation-method__title">Matcha Latte</span>
+                <span class="preparation-method__icon">+</span>
+            </div>
+            <div class="preparation-method__content"></div>
+        </div>
+        
+        <div class="preparation-method">
+            <div class="preparation-method__header">
+                <span class="preparation-method__title">Iced Matcha</span>
+                <span class="preparation-method__icon">+</span>
+            </div>
+            <div class="preparation-method__content"></div>
+        </div>
+        
+        <div class="preparation-method">
+            <div class="preparation-method__header">
+                <span class="preparation-method__title">Iced Matcha Latte</span>
+                <span class="preparation-method__icon">+</span>
+            </div>
+            <div class="preparation-method__content"></div>
+        </div>
+        
+        <div class="preparation-method">
+            <div class="preparation-method__header">
+                <span class="preparation-method__title">Cold-Whisked Matcha</span>
+                <span class="preparation-method__icon">+</span>
+            </div>
+            <div class="preparation-method__content"></div>
+        </div>
+    </div>
+
+    <script>
+        // Collapsible functionality
+        document.querySelectorAll('.preparation-method__header').forEach(header => {
+            header.addEventListener('click', function() {
+                const method = this.parentElement;
+                const content = method.querySelector('.preparation-method__content');
+                const icon = this.querySelector('.preparation-method__icon');
+                
+                // Close all other methods
+                document.querySelectorAll('.preparation-method').forEach(otherMethod => {
+                    if (otherMethod !== method) {
+                        otherMethod.querySelector('.preparation-method__content').classList.remove('active');
+                        otherMethod.querySelector('.preparation-method__icon').textContent = '+';
+                    }
+                });
+                
+                // Toggle current method
+                content.classList.toggle('active');
+                icon.textContent = content.classList.contains('active') ? '−' : '+';
+            });
+        });
+        
+        // Video button functionality
+        document.querySelectorAll('.collapsible-method__video-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                alert('Video would play here');
+            });
+        });
+    </script>
+</body>
+</html>
