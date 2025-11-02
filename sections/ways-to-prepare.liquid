@@ -133,21 +133,21 @@
                 {% endif %}
 
                 {% if block.settings.show_steps %}
-                  <div class="collapsible-method__steps">
+                  <div class="preparation-method__steps">
                     {% if block.settings.step1_title != blank %}
-                      <div class="collapsible-step">
-                        <div class="collapsible-step__number">1</div>
-                        <div class="collapsible-step__content">
-                          <h4 class="collapsible-step__title">{{ block.settings.step1_title }}</h4>
+                      <div class="preparation-step">
+                        <div class="preparation-step__number">1</div>
+                        <div class="preparation-step__content">
+                          <h4 class="preparation-step__title">{{ block.settings.step1_title }}</h4>
                           {% if block.settings.step1_details != blank %}
-                            <div class="collapsible-step__details">{{ block.settings.step1_details }}</div>
+                            <div class="preparation-step__details">{{ block.settings.step1_details }}</div>
                           {% endif %}
                           {% if block.settings.step1_description != blank %}
-                            <p class="collapsible-step__description">{{ block.settings.step1_description }}</p>
+                            <p class="preparation-step__description">{{ block.settings.step1_description }}</p>
                           {% endif %}
                         </div>
                         {% if block.settings.step1_image != blank %}
-                          <div class="collapsible-step__image">
+                          <div class="preparation-step__image">
                             <img src="{{ block.settings.step1_image | image_url: width: 150 }}" 
                                  alt="{{ block.settings.step1_title }}"
                                  loading="lazy">
@@ -157,19 +157,19 @@
                     {% endif %}
 
                     {% if block.settings.step2_title != blank %}
-                      <div class="collapsible-step">
-                        <div class="collapsible-step__number">2</div>
-                        <div class="collapsible-step__content">
-                          <h4 class="collapsible-step__title">{{ block.settings.step2_title }}</h4>
+                      <div class="preparation-step">
+                        <div class="preparation-step__number">2</div>
+                        <div class="preparation-step__content">
+                          <h4 class="preparation-step__title">{{ block.settings.step2_title }}</h4>
                           {% if block.settings.step2_details != blank %}
-                            <div class="collapsible-step__details">{{ block.settings.step2_details }}</div>
+                            <div class="preparation-step__details">{{ block.settings.step2_details }}</div>
                           {% endif %}
                           {% if block.settings.step2_description != blank %}
-                            <p class="collapsible-step__description">{{ block.settings.step2_description }}</p>
+                            <p class="preparation-step__description">{{ block.settings.step2_description }}</p>
                           {% endif %}
                         </div>
                         {% if block.settings.step2_image != blank %}
-                          <div class="collapsible-step__image">
+                          <div class="preparation-step__image">
                             <img src="{{ block.settings.step2_image | image_url: width: 150 }}" 
                                  alt="{{ block.settings.step2_title }}"
                                  loading="lazy">
@@ -179,19 +179,19 @@
                     {% endif %}
 
                     {% if block.settings.step3_title != blank %}
-                      <div class="collapsible-step">
-                        <div class="collapsible-step__number">3</div>
-                        <div class="collapsible-step__content">
-                          <h4 class="collapsible-step__title">{{ block.settings.step3_title }}</h4>
+                      <div class="preparation-step">
+                        <div class="preparation-step__number">3</div>
+                        <div class="preparation-step__content">
+                          <h4 class="preparation-step__title">{{ block.settings.step3_title }}</h4>
                           {% if block.settings.step3_details != blank %}
-                            <div class="collapsible-step__details">{{ block.settings.step3_details }}</div>
+                            <div class="preparation-step__details">{{ block.settings.step3_details }}</div>
                           {% endif %}
                           {% if block.settings.step3_description != blank %}
-                            <p class="collapsible-step__description">{{ block.settings.step3_description }}</p>
+                            <p class="preparation-step__description">{{ block.settings.step3_description }}</p>
                           {% endif %}
                         </div>
                         {% if block.settings.step3_image != blank %}
-                          <div class="collapsible-step__image">
+                          <div class="preparation-step__image">
                             <img src="{{ block.settings.step3_image | image_url: width: 150 }}" 
                                  alt="{{ block.settings.step3_title }}"
                                  loading="lazy">
