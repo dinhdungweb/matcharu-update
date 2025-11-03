@@ -22,28 +22,6 @@
   endif
 -%}
 
-<style>
-  {% if ways_section.settings.background_color != blank and ways_section.settings.background_color != '#ffffff' %}
-    .ways-to-prepare__content {
-      background-color: {{ ways_section.settings.background_color }};
-      padding: 20px;
-      border-radius: 8px;
-    }
-  {% endif %}
-  {% if ways_section.settings.font_size != 100 %}
-    .ways-to-prepare__content {
-      font-size: {{ ways_section.settings.font_size }}%;
-    }
-  {% endif %}
-  {% if ways_section.settings.section_width != 100 %}
-    .ways-to-prepare__content {
-      max-width: {{ ways_section.settings.section_width }}%;
-      margin-left: auto;
-      margin-right: auto;
-    }
-  {% endif %}
-</style>
-
 {%- if ways_section and ways_section.blocks.size > 0 -%}
   <div class="ways-to-prepare__content">
     {% for block in ways_section.blocks %}
@@ -96,7 +74,6 @@
                              data-step3-details="{{ block.settings.step3_details }}"
                              data-step3-description="{{ block.settings.step3_description }}"
                              data-step3-image="{{ block.settings.step3_image | image_url: width: 400 }}">
-                        <div class="preparation-step__zoom-icon"></div>
                       </div>
                     {% endif %}
                   </div>
@@ -134,7 +111,6 @@
                              data-step3-details="{{ block.settings.step3_details }}"
                              data-step3-description="{{ block.settings.step3_description }}"
                              data-step3-image="{{ block.settings.step3_image | image_url: width: 400 }}">
-                        <div class="preparation-step__zoom-icon"></div>
                       </div>
                     {% endif %}
                   </div>
@@ -172,7 +148,6 @@
                              data-step3-details="{{ block.settings.step3_details }}"
                              data-step3-description="{{ block.settings.step3_description }}"
                              data-step3-image="{{ block.settings.step3_image | image_url: width: 400 }}">
-                        <div class="preparation-step__zoom-icon"></div>
                       </div>
                     {% endif %}
                   </div>
@@ -242,7 +217,6 @@
                                data-step3-details="{{ block.settings.step3_details }}"
                                data-step3-description="{{ block.settings.step3_description }}"
                                data-step3-image="{{ block.settings.step3_image | image_url: width: 400 }}">
-                          <div class="preparation-step__zoom-icon"></div>
                         </div>
                       {% endif %}
                     </div>
@@ -280,7 +254,6 @@
                                data-step3-details="{{ block.settings.step3_details }}"
                                data-step3-description="{{ block.settings.step3_description }}"
                                data-step3-image="{{ block.settings.step3_image | image_url: width: 400 }}">
-                          <div class="preparation-step__zoom-icon"></div>
                         </div>
                       {% endif %}
                     </div>
@@ -318,7 +291,6 @@
                                data-step3-details="{{ block.settings.step3_details }}"
                                data-step3-description="{{ block.settings.step3_description }}"
                                data-step3-image="{{ block.settings.step3_image | image_url: width: 400 }}">
-                          <div class="preparation-step__zoom-icon"></div>
                         </div>
                       {% endif %}
                     </div>

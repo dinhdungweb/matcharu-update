@@ -1,27 +1,5 @@
 {{ 'ways-to-prepare.css' | asset_url | stylesheet_tag }}
 
-<style>
-  .section-{{ section.id }} {
-    {% if section.settings.background_color != blank and section.settings.background_color != '#ffffff' %}
-      background-color: {{ section.settings.background_color }};
-    {% endif %}
-    {% if section.settings.font_size != 100 %}
-      font-size: {{ section.settings.font_size }}%;
-    {% endif %}
-    {% if section.settings.section_width != 100 %}
-      max-width: {{ section.settings.section_width }}%;
-      margin-left: auto;
-      margin-right: auto;
-    {% endif %}
-    {% if section.settings.padding_top != 40 %}
-      padding-top: {{ section.settings.padding_top }}px;
-    {% endif %}
-    {% if section.settings.padding_bottom != 40 %}
-      padding-bottom: {{ section.settings.padding_bottom }}px;
-    {% endif %}
-  }
-</style>
-
 {%- liquid
   assign st = section.settings
   assign container = st.container | default: 'container'
@@ -90,7 +68,6 @@
                                data-step3-details="{{ block.settings.step3_details }}"
                                data-step3-description="{{ block.settings.step3_description }}"
                                data-step3-image="{{ block.settings.step3_image | image_url: width: 400 }}">
-                          <div class="preparation-step__zoom-icon"></div>
                         </div>
                       {% endif %}
                     </div>
@@ -128,7 +105,6 @@
                                data-step3-details="{{ block.settings.step3_details }}"
                                data-step3-description="{{ block.settings.step3_description }}"
                                data-step3-image="{{ block.settings.step3_image | image_url: width: 400 }}">
-                          <div class="preparation-step__zoom-icon"></div>
                         </div>
                       {% endif %}
                     </div>
@@ -166,7 +142,6 @@
                                data-step3-details="{{ block.settings.step3_details }}"
                                data-step3-description="{{ block.settings.step3_description }}"
                                data-step3-image="{{ block.settings.step3_image | image_url: width: 400 }}">
-                          <div class="preparation-step__zoom-icon"></div>
                         </div>
                       {% endif %}
                     </div>
@@ -236,7 +211,6 @@
                                  data-step3-details="{{ block.settings.step3_details }}"
                                  data-step3-description="{{ block.settings.step3_description }}"
                                  data-step3-image="{{ block.settings.step3_image | image_url: width: 400 }}">
-                            <div class="preparation-step__zoom-icon"></div>
                           </div>
                         {% endif %}
                       </div>
@@ -274,7 +248,6 @@
                                  data-step3-details="{{ block.settings.step3_details }}"
                                  data-step3-description="{{ block.settings.step3_description }}"
                                  data-step3-image="{{ block.settings.step3_image | image_url: width: 400 }}">
-                            <div class="preparation-step__zoom-icon"></div>
                           </div>
                         {% endif %}
                       </div>
@@ -312,7 +285,6 @@
                                  data-step3-details="{{ block.settings.step3_details }}"
                                  data-step3-description="{{ block.settings.step3_description }}"
                                  data-step3-image="{{ block.settings.step3_image | image_url: width: 400 }}">
-                            <div class="preparation-step__zoom-icon"></div>
                           </div>
                         {% endif %}
                       </div>
@@ -643,56 +615,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
       ],
       "default": "default-color-scheme"
-    },
-    {
-      "type": "header",
-      "content": "Section Customization"
-    },
-    {
-      "type": "color",
-      "id": "background_color",
-      "label": "Background Color",
-      "default": "#ffffff"
-    },
-    {
-      "type": "range",
-      "id": "font_size",
-      "label": "Font Size (%)",
-      "min": 80,
-      "max": 150,
-      "step": 5,
-      "unit": "%",
-      "default": 100
-    },
-    {
-      "type": "range",
-      "id": "section_width",
-      "label": "Section Width (%)",
-      "min": 60,
-      "max": 100,
-      "step": 5,
-      "unit": "%",
-      "default": 100
-    },
-    {
-      "type": "range",
-      "id": "padding_top",
-      "label": "Padding Top (px)",
-      "min": 0,
-      "max": 100,
-      "step": 5,
-      "unit": "px",
-      "default": 40
-    },
-    {
-      "type": "range",
-      "id": "padding_bottom",
-      "label": "Padding Bottom (px)",
-      "min": 0,
-      "max": 100,
-      "step": 5,
-      "unit": "px",
-      "default": 40
     }
   ],
   "blocks": [
