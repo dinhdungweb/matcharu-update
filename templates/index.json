@@ -505,7 +505,7 @@
         "carousel_autoplay": false,
         "carousel_loop": false,
         "carousel_arrows": true,
-        "carousel_pagination": "carousel_pagination_progress",
+        "carousel_pagination": "carousel_bullets",
         "reveal_on_scroll": false,
         "view_all_enable": false,
         "text_view_all": "View all",
