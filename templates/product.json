@@ -478,7 +478,12 @@
         "heading": "Ways to Prepare",
         "description": "<p>Discover different methods to prepare and enjoy your matcha, from traditional ceremonies to modern variations.</p>",
         "container": "container",
-        "color_scheme": "inverse-color-scheme"
+        "color_scheme": "inverse-color-scheme",
+        "background_color": "#f8f5f0",
+        "font_size": 100,
+        "section_width": 100,
+        "padding_top": 40,
+        "padding_bottom": 40
       }
     },
     "1759295770eaf51224": {
